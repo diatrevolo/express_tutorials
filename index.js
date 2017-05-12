@@ -5,10 +5,20 @@ var path = require('path');
 var logger = require('morgan');
 var app = express();
 
+var EVIL_IP = "123.45.67.89";
+
 app.use(logger("short"));
 
 var publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
+
+app.use(function(req, res) {
+    if (req.ip === EVIL_IP) {
+        res.status(401).send('Not allowed!');
+    } else {
+        next();
+    }
+});
 
 app.get("/", function(req, res) {
     res.end("Welcome to my homepage!");
