@@ -22,6 +22,10 @@ app.get("/weather", function(req, res) {
     res.end("The current weather is NICE!");
 });
 
+app.get("/hello/:who", function(req, res) {
+    res.end("Hello, " + req.params.who + ".");
+});
+
 app.use(function(req, res) {
     res.statusCode = 404;
     res.end("FOE OH FOE");
