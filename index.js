@@ -30,6 +30,10 @@ app.get("/expressjs", function(req, res) {
     res.redirect("http://expressjs.com");
 });
 
+app.get("/getPdf", function(req, res) {
+    res.sendFile("/Users/rogoenaga/Downloads/Claire_Ortiz_Hill_and_Guillermo_E._Rosad.pdf");
+});
+
 app.use(function(req, res) {
     res.statusCode = 404;
     res.end("FOE OH FOE");
